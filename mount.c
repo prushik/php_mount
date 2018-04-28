@@ -1,8 +1,5 @@
 #include "php_mount.h"
 
-/* Declare global module variable */
-ZEND_DECLARE_MODULE_GLOBALS(mount)
-
 /* START: function implementations */
 PHP_FUNCTION(mount_mount)
 {
@@ -20,15 +17,15 @@ PHP_FUNCTION(mount_mount)
 
 PHP_FUNCTION(mount_umount)
 {
-	COUNTER_G(basic_counter_value)++;
+	RETURN_TRUE;
 }
 
 /* END: function implementations */
 
 /* Create module function list */
 const zend_function_entry php_mount_functions[] = {
-	ZEND_FE(mount, ZEND_FN(mount_mount), NULL)
-	ZEND_FE(mount, ZEND_FN(mount_umount), NULL)
+	ZEND_NAMED_FE(mount, ZEND_FN(mount_mount), NULL)
+	ZEND_NAMED_FE(mount, ZEND_FN(mount_umount), NULL)
 	PHP_FE_END
 };
 
