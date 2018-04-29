@@ -25,12 +25,12 @@ PHP_FUNCTION(mount_umount)
 /* Create module function list */
 const zend_function_entry php_mount_functions[] = {
 	ZEND_NAMED_FE(mount, ZEND_FN(mount_mount), NULL)
-	ZEND_NAMED_FE(mount, ZEND_FN(mount_umount), NULL)
+	ZEND_NAMED_FE(umount, ZEND_FN(mount_umount), NULL)
 	PHP_FE_END
 };
 
 /* Create the module (extension) entry */
-zend_module_entry counter_module_entry = {
+zend_module_entry mount_module_entry = {
 	STANDARD_MODULE_HEADER,
 	PHP_MOUNT_EXTNAME,
 	php_mount_functions, /* Functions */
