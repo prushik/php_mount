@@ -9,6 +9,7 @@
 #endif /* HAVE_CONFIG_H */
 
 #include "php.h"
+#include <sys/mount.h>
 
 #ifdef ZTS
 #include "TSRM.h"

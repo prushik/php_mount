@@ -4,9 +4,10 @@
 PHP_FUNCTION(mount_mount)
 {
 	char *src, *target, *fstype, *data;
+	long src_len, target_len, fstype_len, data_len;
 	long flags = 0;
 
-	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sss|ls", src, target, fstype, &flags, data) == FAILURE) {
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sss|ls", &src, &src_len, &target, &target_len, &fstype, &fstype_len, &flags, &data, &data_len) == FAILURE) {
 		RETURN_FALSE;
 	}
 
@@ -17,6 +18,15 @@ PHP_FUNCTION(mount_mount)
 
 PHP_FUNCTION(mount_umount)
 {
+	char *mp;
+	long mp_len;
+
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &mp, &mp_len) == FAILURE) {
+		RETURN_FALSE;
+	}
+
+	umount(mp);
+
 	RETURN_TRUE;
 }
 
